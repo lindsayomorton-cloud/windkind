@@ -1,0 +1,3 @@
+let tts=null;
+async function load(){let mod;try{mod=await import('https://cdn.jsdelivr.net/npm/kokoro-js@1.2.1/+esm')}catch{mod=await import('https://esm.sh/kokoro-js@1.2.1')}tts=await mod.KokoroTTS.from_pretrained('onnx-community/Kokoro-82M-v1.0-ONNX',{dtype:'q8',device:'wasm'})}
+self.onmessage=async e=>{const m=e.data;try{if(m.type==='load'){await load();self.postMessage({type:'ready'})}else if(m.type==='say'){const raw=await tts.generate(m.text,{voice:m.voice,speed:m.speed});const blob=raw.toBlob();self.postMessage({type:'audio',id:m.id,blob})}}catch(err){self.postMessage({type:m.type==='load'?'error':'fail',id:m.id,msg:String(err)})}};

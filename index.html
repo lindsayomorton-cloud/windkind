@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spellwood Arcade · Woodland spelling games</title>
+<meta name="description" content="A cozy forest arcade where every move is a spelled word. Seven spelling games for 6 and 7 year olds.">
+<link rel="icon" href="assets/fox_sniff.webp">
+<link rel="stylesheet" href="ds/organic.css">
+<link rel="stylesheet" href="style.css">
+<style>a{color:#a66f32}a:hover{color:#334235}</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+  // Play rules. mode: "unlock" (spell N words to earn a game), "during" (spell inside games), "free" (free play)
+  window.SPELLWOOD_CFG = { mode: "unlock", words: 5, devSkip: false };
+</script>
+<script src="asset-map.js"></script>
+<script src="literacy.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
