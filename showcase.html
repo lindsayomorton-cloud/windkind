@@ -308,6 +308,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     // createElement so they execute, awaiting onload for src scripts to
     // preserve ordering (React before ReactDOM before Babel before text/babel).
     const doc = new DOMParser().parseFromString(template, 'text/html');
+    // keep the favicon links from the outer page
+    document.querySelectorAll('link[rel~="icon"],link[rel="apple-touch-icon"]').forEach(function(l) { doc.head.appendChild(l.cloneNode()); });
     document.documentElement.replaceWith(doc.documentElement);
 
     // Resolve page-frame markers: mint this document's own blob for each
